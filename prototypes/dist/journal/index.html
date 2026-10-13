@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff0f6">
+  <title>今日手册 · 个人工作站</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="主导航">
+      <div class="brand" aria-label="演示用户 工作站"><span class="brand-mark">L<span>.</span></span><span class="brand-name">个人工作站</span></div>
+      <nav class="rail-nav" aria-label="页面">
+        <button class="rail-link is-active" data-view="today" aria-current="page"><span class="nav-glyph" aria-hidden="true">◷</span><span>今天</span></button>
+        <button class="rail-link" data-view="projects"><span class="nav-glyph" aria-hidden="true">▤</span><span>项目</span></button>
+        <button class="rail-link" data-view="investments"><span class="nav-glyph" aria-hidden="true">◫</span><span>投资</span></button>
+        <button class="rail-link" data-view="settings"><span class="nav-glyph" aria-hidden="true">⚙</span><span>设置</span></button>
+      </nav>
+      <div class="rail-foot"><span class="presence-dot"></span><span>演示数据<br><small>本地交互原型</small></span></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb">2026 年 10 月 12 日 <span class="crumb-line"></span> 星期一 <span class="mobile-demo">演示数据</span></div>
+        <div class="top-actions">
+          <a class="compare-link" href="../index.html">三版对比</a>
+          <button class="text-action" id="openAssistant"><span aria-hidden="true">✳</span> 问工作站</button>
+          <span class="avatar" aria-label="演示用户">L</span>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="view is-visible" id="view-today" aria-labelledby="today-title">
+          <div class="today-head">
+            <div>
+              <p class="day-overline">星期一 · 你的今日手册</p>
+              <h1 id="today-title">早上好，演示用户<span class="period">.</span></h1>
+              <p class="head-subtitle">今天有 3 段已确认安排，午后留有完整的专注时间。</p>
+            </div>
+            <button class="date-pill" id="dateInfo" aria-label="查看演示日期说明"><strong>12</strong><span>十月<br>周一</span></button>
+          </div>
+
+          <div class="today-columns">
+            <div class="day-main">
+              <div class="section-heading timeline-heading">
+                <div><p class="micro-label">今天的节奏</p><h2>把时间留给重要的事</h2></div>
+                <span class="section-aside">08:00 — 21:00</span>
+              </div>
+
+              <div class="timeline" aria-label="今天的时间轴">
+                <div class="time-row done"><time>08:30</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">生活 · 已确认</span><h3>早餐与晨间整理</h3><p>30 分钟，先给自己一点安静。</p></div><span class="duration">30 分</span></div>
+                <div class="time-row work"><time>09:30</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">工作 · 已确认</span><h3>产品路线讨论</h3><p>与团队同步本周优先级。</p></div><span class="duration">60 分</span></div>
+                <div class="time-row focus"><time>11:00</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">专注时段 · 可调整</span><h3>整理研究笔记</h3><p>给「个人工作站」留一段不被打断的时间。</p></div><span class="duration">90 分</span></div>
+                <div class="time-row free"><time>13:30</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">可用时间</span><h3>下午有一段完整空档</h3><p>13:30–16:00，适合推进一件需要思考的事。</p><button class="inline-link" id="previewPlan">查看安排建议 <span aria-hidden="true">↗</span></button></div><span class="duration">2 小时 30 分</span></div>
+                <div class="time-row family"><time>17:30</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">家庭 · 已确认</span><h3>与家人共进晚餐</h3><p>工作在这之前收尾。</p></div><span class="duration">90 分</span></div>
+                <div class="time-row end"><time>21:00</time><span class="time-track"><span class="dot"></span></span><div class="time-content"><span class="event-type">一天的结束</span><h3>留白</h3></div></div>
+              </div>
+
+              <div class="inbox-strip" id="inboxStrip">
+                <div class="inbox-symbol" aria-hidden="true">↘</div>
+                <div><p class="micro-label">新收件</p><h3>把研究提纲纳入本周任务？</h3><p>根据消息时间推断：本周三 10 月 14 日前完成。接受前可选择所属项目。</p></div>
+                <button class="primary-button" id="acceptTask">查看任务</button>
+              </div>
+              <div class="inbox-strip reading-inbox" id="readingInboxStrip" hidden>
+                <div class="inbox-symbol" aria-hidden="true">↘</div>
+                <div><p class="micro-label">待整理阅读任务</p><h3>阅读：AI 工具与个人知识工作</h3><p id="readingInboxText">尚未归属项目，也未进入今日时间轴。</p></div>
+                <button class="primary-button" id="acceptReading">整理任务</button>
+              </div>
+
+              <section class="progress-section" aria-labelledby="progress-title">
+                <div class="section-heading"><div><p class="micro-label">持续推进</p><h2 id="progress-title">项目进度</h2></div><button class="inline-link" data-jump="projects">查看全部项目 <span aria-hidden="true">↗</span></button></div>
+                <div class="progress-list">
+                  <div class="progress-item"><div class="progress-index">01</div><div><h3>个人工作站</h3><p>下一步：整理用户访谈中的日程痛点</p></div><div class="progress-end"><span>3 / 5 里程碑</span><div class="progress-bar"><i style="width:60%"></i></div></div></div>
+                  <div class="progress-item"><div class="progress-index">02</div><div><h3>秋季阅读计划</h3><p>本周继续：读完《设计中的设计》第三章</p></div><div class="progress-end"><span>2 / 4 里程碑</span><div class="progress-bar"><i style="width:50%"></i></div></div></div>
+                </div>
+              </section>
+            </div>
+
+            <aside class="brief-panel" aria-labelledby="brief-title">
+              <div class="brief-top"><span class="brief-kicker">每日简报</span><span class="brief-date">10 / 12</span></div>
+              <h2 id="brief-title">今天值得<br>慢一点读<span class="period">.</span></h2>
+              <p class="brief-intro">两则与你关注的科技与市场有关的变化，留给今天的阅读时间。</p>
+              <button class="feature-story" data-story="ai"><span class="image-placeholder"><span class="image-mark">◇</span><span>图片占位 · AI 与技术专题<br>横向 16:9 编辑配图</span></span><span class="story-category">科技观察 · 08:10 更新</span><strong>AI 工具开始改变个人知识工作的节奏</strong><span class="story-deck">从信息收集转向任务编排，真正的变化发生在日常工作流里。</span><span class="read-link">阅读简报 <span aria-hidden="true">↗</span></span></button>
+              <div class="brief-rule"></div>
+              <button class="minor-story" data-story="market"><span class="story-number">02</span><span><span class="story-category">市场观察 · 07:45 更新</span><strong>本周科技板块关注什么</strong><span class="story-deck">与你的 Robinhood 持仓主题相关；仅供阅读，不构成交易建议。</span></span><span class="story-arrow" aria-hidden="true">↗</span></button>
+              <div class="brief-bottom"><span>来源与更新时间见正文</span><button class="inline-link" data-jump="investments">查看投资概览 <span aria-hidden="true">↗</span></button></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view subview" id="view-projects" aria-labelledby="projects-title" hidden>
+          <div class="subview-head"><p class="day-overline">把想法继续往前推</p><h1 id="projects-title">项目<span class="period">.</span></h1><p>进度由演示任务构成；这里的操作只改变当前页面。</p></div>
+          <div class="subview-layout"><div class="wide-sheet">
+            <div class="sheet-heading"><span>正在推进</span><span>2 个项目</span></div>
+            <article class="project-feature"><span class="project-no">01 / 工作</span><h2>个人工作站</h2><p>把工作、学习和生活放进同一份可读的日程里，同时保留每个领域的边界。</p><div class="project-meter"><span>3 / 5 里程碑</span><div class="progress-bar"><i style="width:60%"></i></div></div><div class="milestones"><span class="checked">✓ 范围草稿</span><span class="checked">✓ 信息结构</span><span class="checked">✓ 视觉原型</span><span>○ 用户访谈</span><span>○ 可用性整理</span></div></article>
+            <article class="project-feature project-second"><span class="project-no">02 / 学习</span><h2>秋季阅读计划</h2><p>把阅读和笔记变成每周稳定的小块时间。</p><div class="project-meter"><span>2 / 4 里程碑</span><div class="progress-bar"><i style="width:50%"></i></div></div></article>
+          </div><aside class="side-note"><p class="micro-label">本周聚焦</p><h3>一件事，<br>一段完整时间。</h3><p id="weeklyFocusText">周三前完成研究提纲。今天 13:30–16:00 的空档可用来推进初稿。</p><button class="outline-button" id="projectPlan">预览安排建议</button><div class="note-divider"></div><p class="micro-label">任务箱</p><p id="projectInboxStatus">1 件新任务待归属项目</p><button class="inline-link" id="projectAccept">处理新任务 <span aria-hidden="true">↗</span></button><p id="projectReadingStatus" hidden></p><button class="inline-link" id="projectReadingOpen" hidden>整理阅读任务 <span aria-hidden="true">↗</span></button></aside></div>
+        </section>
+
+        <section class="view subview" id="view-investments" aria-labelledby="investments-title" hidden>
+          <div class="subview-head"><p class="day-overline">保持知情，决定由你做</p><h1 id="investments-title">投资概览<span class="period">.</span></h1><p>演示账户，仅读取视图。信息截至标注时间；这里不提供交易操作。</p></div>
+          <div class="finance-layout"><div class="wide-sheet finance-sheet"><div class="sheet-heading"><span>已连接示例</span><span>只读</span></div><div class="account-row"><div class="account-icon">R</div><div><h2>Robinhood 个人账户</h2><p>股票与现金 · 10 月 12 日 08:05 检查</p></div><strong>$42,680<span>.24</span></strong></div><div class="account-row"><div class="account-icon retirement">R</div><div><h2>Robinhood 退休账户</h2><p>长期配置 · 10 月 12 日 08:05 检查</p></div><strong>$18,410<span>.80</span></strong></div><div class="account-row failed"><div class="account-icon schwab">S</div><div><h2>Charles Schwab</h2><p>最近检查失败 · 10 月 12 日 08:06</p></div><span class="failed-tag">数据缺失</span></div><div class="finance-caution"><span>!</span><p>Schwab 数据暂不可用，因此这里不计算“总资产”或完整投资组合占比。上方金额仅属于各自账户。</p></div></div><aside class="side-note finance-note"><p class="micro-label">阅读提示</p><h3>看见关联，<br>再做判断。</h3><p>今日市场简报提到科技板块，与示例持仓主题有交集。它只是阅读线索，不代表买卖建议。</p><button class="outline-button" data-story="market">阅读市场简报</button><div class="note-divider"></div><p class="source-small">数据源：Robinhood 示例账户（只读）<br>缺失源：Schwab · 检查失败<br>以上均为演示数据。</p></aside></div>
+        </section>
+
+        <section class="view subview" id="view-settings" aria-labelledby="settings-title" hidden>
+          <div class="subview-head"><p class="day-overline">你决定哪些信息可以放在一起</p><h1 id="settings-title">设置与边界<span class="period">.</span></h1><p>以下权限只供原型演示，开关仅改变本页提示。</p></div>
+          <div class="subview-layout"><div class="wide-sheet settings-sheet"><div class="sheet-heading"><span>跨领域使用</span><span>本页演示</span></div><div class="setting-row"><div><h2>新闻与持仓主题关联</h2><p>用只读持仓主题解释新闻相关性。</p></div><span class="permission allowed">已允许</span></div><div class="setting-row"><div><h2>工作与家庭日历一起看</h2><p>只用于安排时间与避免冲突。</p></div><span class="permission allowed">已允许</span></div><div class="setting-row"><div><h2>工作邮件正文跨领域使用</h2><p>邮件正文包含更私人的上下文，需要单独授权。</p></div><button class="permission-button" id="mailPermission" aria-pressed="false">未授权 · 查看说明</button></div><div class="setting-row"><div><h2>数据源状态</h2><p>Robinhood 示例账户：08:05 读取成功。Schwab：08:06 检查失败。</p></div><span class="permission warn">部分缺失</span></div></div><aside class="side-note"><p class="micro-label">原型说明</p><h3>所有变化<br>只在这一页。</h3><p>不会连接账户、发送邮件、写入日历、调用 AI 或产生费用。页面刷新后演示状态会重置。</p><div class="note-divider"></div><p class="source-small">未接入：银行、Google Drive、知识库与 Codex 项目观察。</p></aside></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="dialogBackdrop" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" tabindex="-1">
+      <button class="dialog-close" id="closeDialog" aria-label="关闭对话框">×</button>
+      <div id="dialogContent"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="task-state.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

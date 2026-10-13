@@ -1,0 +1,26 @@
+{
+  "description": "Curated synthetic prototype; not the original frozen snapshot",
+  "prepared_date": "2026-10-13",
+  "files_sha256": {
+    "README.md": "904a5c8b0aea327911de4bcc1808d3793f9650958ea3a62904889d39ecb3226b",
+    "design-brief.md": "95c8a93914486f5f98b6111b9361f9581c802dca055fa01f016a2c97506a5f45",
+    "dist/decision/app.js": "cc151ea87def26697041ee9862e4d9a5fe4d75d30c430224e7d188950333f05c",
+    "dist/decision/index.html": "37261b12941c4bf46e9b64e0b0a48cf30546d1191b576293f2008d85e35da65f",
+    "dist/decision/style.css": "9892f43b146e91a12f89b2d75a7d272de548337c8b54253c9e977ce8de2db379",
+    "dist/index.html": "126056ca3ca1ca03b28f6b45a4f70a465db7fc7de5840a0d014395d3d7a8d1a1",
+    "dist/journal/app.js": "bbbe447b3c4fc6025b5cbc4756fa708d8f35bda8e2e5a55a38f318067d3b79fd",
+    "dist/journal/index.html": "a96304037119ec2e103b78eb92ad7f7dc0577a69ab91a43e0724d2cd0815354d",
+    "dist/journal/styles.css": "c019c0f94fb2fc4c649284942bfae4b266f3e37e45cb2186970fb1cd605c1eaf",
+    "dist/journal/task-state.js": "1b9381a59f5397148c3bc14246258f8212a6c0e285761b2ad63a4575cebc5b5f",
+    "dist/journal/task-state.test.cjs": "fab9fba4715ae547cee9e859cc3b621df2809aac34e11bafaba1c8615f15e6a4",
+    "dist/observatory/app.js": "7a47642e2c9fbabe50b521efacacdb6d3cfede25139cb5e4aa67f9882f6805cc",
+    "dist/observatory/index.html": "dff24300130d2686aa91ed451a734c5df49ce88db8920cbd95ad1c0a700353a6",
+    "dist/observatory/styles.css": "68c031fe1188b4722fa00500ab29697e98ffd3d51dc2ce2b84e7e10e08ee3510",
+    "dist/observatory-v2/app.js": "cebd48e8e6aa61eef00f214013c1c4edb04580ba511710057bed817028444905",
+    "dist/observatory-v2/index.html": "58d87367b9a0a8537869c2f435ae3bc7cdab8cfdf99c9f69253ee614e890b5a2",
+    "dist/observatory-v2/model.js": "edec7167a272b9a3527db8d7042c80b6f22f2a259eb0e55de9827b5e3f56a342",
+    "dist/observatory-v2/model.test.js": "2154e1b1d278cb47f71204bebe9eb93a61820e675e8ffb293dc5e7ec603e9c36",
+    "dist/observatory-v2/styles.css": "72cdd250a99c6a7ef52313d10fa4bde0078b84cfc583ea01cf5da8851f720291",
+    "observatory-v2-design.md": "b193f4cf43bac85a6c7311ad02ee1884ba53e1e7a3509e895122b4f520587d13"
+  }
+}

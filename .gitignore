@@ -1,0 +1,28 @@
+# Private material must never enter Git
+.private/
+.runtime/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+token*.json
+secrets/
+backups/
+logs/
+*.log
+# Generated/dependency files
+node_modules/
+coverage/
+playwright-report/
+test-results/
+.DS_Store

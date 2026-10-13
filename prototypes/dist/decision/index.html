@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e7ebec">
+  <title>决策工作台 · 个人工作站</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="outer-frame">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>工作站<span class="brand-suffix"> / 演示用户</span></span></div>
+        <nav class="nav-pill" aria-label="主导航">
+          <button type="button" class="nav-item is-active" data-view="today" aria-current="page">今日</button>
+          <button type="button" class="nav-item" data-view="projects">项目</button>
+          <button type="button" class="nav-item" data-view="activity">动态</button>
+        </nav>
+        <div class="header-actions"><button type="button" class="icon-button" data-action="settings" aria-label="设置与权限" title="设置与权限">⚙</button><button type="button" class="ask-button" data-action="ask"><span aria-hidden="true">✦</span> 问工作站</button></div>
+      </header>
+
+      <main>
+        <div class="intro-row"><div><p class="meta-line">星期一 · 2026 年 10 月 12 日 <span class="demo-chip">演示数据</span></p><h1 id="page-title">今天，先把重要的事定下来。</h1></div><a class="compare-link" href="../index.html">三版对比 <span aria-hidden="true">↗</span></a></div>
+
+        <section id="today-view" class="view is-visible" aria-labelledby="page-title">
+          <div class="main-grid">
+            <section class="plan-panel" aria-labelledby="plan-title">
+              <div class="panel-top"><div><p class="panel-kicker">今日计划</p><h2 id="plan-title">给重要事项留出整块时间</h2></div><span class="plan-status" id="plan-status">待确认计划</span></div>
+              <p class="plan-lede">已确认的安排占 3 小时 30 分；今天还有 2 小时 30 分可自主安排。建议把精力最好的下午留给论文修订。</p>
+              <div class="capacity-row"><div class="capacity-ring" id="capacity-ring" role="img" aria-label="8 小时可规划时间中，3 小时 30 分已确认，2 小时建议安排，2 小时 30 分仍可用"><div class="ring-center"><strong>2<span>h</span> 30<span>m</span></strong><small>尚可安排</small></div></div><div class="capacity-legend"><div><span class="legend-key legend-fixed"></span><span>已确认安排</span><strong>3h 30m</strong></div><div><span class="legend-key legend-proposed"></span><span id="suggestion-label">计划建议</span><strong>2h</strong></div><div><span class="legend-key legend-open"></span><span>仍可安排</span><strong>2h 30m</strong></div><p>按 09:30–17:30 的演示时段估算</p></div></div>
+              <div class="schedule-heading"><h3>时间轴</h3><span id="schedule-state">建议需先确认</span></div>
+              <ol class="timeline"><li><time>09:30</time><span class="timeline-dot fixed"></span><div><strong>组会 · 研究进展</strong><small>已确认日历安排 / 至 10:30</small></div></li><li><time>11:00</time><span class="timeline-dot fixed"></span><div><strong>课程讨论与准备</strong><small>已确认日历安排 / 至 12:30</small></div></li><li class="proposed"><time>14:00</time><span class="timeline-dot proposed-dot"></span><div><strong>论文修订：方法部分</strong><small id="timeline-suggestion-state">AI 建议 / 2 小时，尚未写入日历</small></div></li><li><time>16:30</time><span class="timeline-dot fixed"></span><div><strong>家庭接送</strong><small>已确认日历安排 / 至 17:30</small></div></li></ol>
+              <div class="plan-footer"><button type="button" class="primary-light" id="plan-confirm" data-action="plan-confirm">确认今日计划</button><span id="plan-footnote">确认仅保存本页计划；写入日历需再确认。</span></div>
+            </section>
+
+            <section class="approval-panel" aria-labelledby="approval-title"><div class="section-header"><div><p class="panel-kicker muted">由你决定</p><h2 id="approval-title">等待你确认 <span id="queue-count" class="count-badge">3</span></h2></div><span class="small-note">操作留在本页</span></div>
+              <div class="approval-list">
+                <article class="approval-item" id="task-queue-item"><div class="item-leading"><span class="item-icon violet" aria-hidden="true">✓</span><span class="item-type">任务提议</span></div><h3>为统计作业建立提交任务</h3><p>课程邮件写明「周三前交」。系统推断截止为 10 月 14 日 23:59，待你核对。</p><div class="evidence"><span>原文事实</span>「周三前交」<br><span>AI 推断</span>10 月 14 日 23:59</div><button type="button" class="text-action" data-action="task-preview">核对并决定 <span aria-hidden="true">↗</span></button></article>
+                <article class="approval-item" id="mail-queue-item"><div class="item-leading"><span class="item-icon peach" aria-hidden="true">✉</span><span class="item-type">邮件整理</span></div><h3>将导师邮件标记为「待回复」</h3><p>邮件来自邮箱演示数据。先看邮件预览，再决定是否更改状态。</p><button type="button" class="text-action" data-action="mail-preview">查看邮件预览 <span aria-hidden="true">↗</span></button></article>
+                <article class="approval-item" id="calendar-queue-item"><div class="item-leading"><span class="item-icon slate" aria-hidden="true">▦</span><span class="item-type">日历写入</span></div><h3>为论文修订预留 14:00–16:00</h3><p>这是今日计划的建议时段。写入日历需要单独确认。</p><button type="button" class="text-action" data-action="calendar-preview">查看写入预览 <span aria-hidden="true">↗</span></button></article>
+              </div>
+            </section>
+          </div>
+
+          <div class="bottom-grid"><section class="changes-panel" aria-labelledby="changes-title"><div class="section-header"><div><p class="panel-kicker muted">从上次查看以来</p><h2 id="changes-title">今天有哪些变化</h2></div><button type="button" class="subtle-link" data-view="activity">查看全部动态 ↗</button></div><div class="change-content"><div class="change-story"><div class="story-image" role="img" aria-label="新闻配图占位：半导体实验室工作台，16 比 9 横图，用于主题阅读"><span>图片占位</span><small>半导体实验室工作台<br>16:9 · 主题阅读</small></div><div><span class="story-topic">产业新闻 · 08:20 更新</span><h3>新型芯片封装投资升温</h3><p>与关注的半导体领域有关。摘要为 AI 解读，请先查看来源再采取行动。</p><button type="button" class="subtle-link" data-action="news">阅读来源与解读 ↗</button></div></div><div class="change-notes"><div><span class="change-dot"></span><p><strong>课程邮件有新要求</strong><small>统计作业需「周三前交」 · 08:12</small></p></div><div><span class="change-dot muted-dot"></span><p><strong>投资覆盖仍不完整</strong><small>Schwab 尚未完成检查，不显示总财富</small></p></div></div></div></section>
+          <section class="status-panel" aria-labelledby="status-title"><div class="section-header"><div><p class="panel-kicker muted">来源与检查</p><h2 id="status-title">数据与运行状态</h2></div><span class="status-dot" aria-label="有一项待检查"></span></div><div class="source-list"><div><span>日历</span><strong id="calendar-source">已读取</strong><small>数据 08:01 · 检查 08:24</small></div><div><span>Gmail</span><strong id="gmail-source">已读取</strong><small>数据 08:12 · 检查 08:24</small></div><div><span>Schwab</span><strong id="finance-source" class="warning">待完成</strong><small>上次数据 10/10 17:40 · 检查 08:24</small></div></div><p class="status-caveat">账户覆盖不完整，投资只显示已读取来源；不估算总财富。</p><button type="button" class="subtle-link" data-action="settings">查看来源与权限 ↗</button></section></div>
+        </section>
+
+        <section id="projects-view" class="view secondary-view" aria-label="项目"><div class="secondary-head"><p class="panel-kicker muted">持续推进</p><h2>把收到的事，放回自己的节奏。</h2><p>项目只收录你已接受的任务；系统建议不会自动进入清单。</p></div><div class="project-layout"><article class="project-feature"><div class="project-heading"><span class="project-monogram">研</span><div><span>研究 / 进行中</span><h3>论文修订</h3></div></div><p>本周重点：梳理方法部分的论证。今天建议安排 14:00–16:00，是否写入日历由你决定。</p><div class="accepted-task" id="research-accepted-task" hidden></div><div class="project-progress"><span>本周计划</span><strong>3 / 5 项</strong></div><div class="progress-track"><span></span></div></article><div class="project-list"><h3>学习与课程</h3><div class="project-row"><span>01</span><div><strong>统计方法课程</strong><small id="project-task-status">暂无新接受任务</small></div><button type="button" data-action="task-preview">查看提议 ↗</button></div><div class="project-row"><span>02</span><div><strong>论文阅读笔记</strong><small>本周五整理两篇文献</small></div><span class="row-status">进行中</span></div></div></div></section>
+
+        <section id="activity-view" class="view secondary-view" aria-label="动态"><div class="secondary-head"><p class="panel-kicker muted">事实与解释分开看</p><h2>变化是线索，决定仍在你手中。</h2><p>消息、新闻与账户检查按时间排列。来源时间不等于本次检查时间。</p></div><div class="activity-layout"><article class="activity-feature"><div class="story-image large" role="img" aria-label="新闻配图占位：半导体实验室工作台，16 比 9 横图，用于主题阅读"><span>图片占位</span><small>半导体实验室工作台 · 16:9 · 主题阅读</small></div><div class="activity-body"><span class="story-topic">新闻来源 · 08:20</span><h3>新型芯片封装投资升温</h3><p>AI 解读：这条新闻与关注的半导体方向相关，暂不形成投资建议。阅读时应区分行业事实与持仓影响的推测。</p><button type="button" class="primary-dark" data-action="news">查看依据</button></div></article><div class="activity-stream"><h3>今日记录</h3><div><time>08:24</time><p><strong>来源检查完成 2 / 3</strong><small>Schwab 未完成，投资覆盖不完整。</small></p></div><div><time>08:12</time><p><strong>统计课程邮件</strong><small>原文提及「周三前交」；具体时间由 AI 推断。</small></p></div><div><time>08:01</time><p><strong>日历读取完成</strong><small>今天已有 3 小时 30 分确认安排。</small></p></div></div></div></section>
+      </main>
+      <footer class="app-footer"><span>个人工作站 · 交互原型 A</span><span>所有内容为演示数据，操作只更改本页本机状态</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="modal" class="modal"><div class="modal-frame"><button type="button" class="modal-close" data-action="close" aria-label="关闭对话框">×</button><div id="modal-content"></div></div></dialog>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#252629" />
+  <title>信号观察室 · 个人工作站</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="个人工作站，信号观察室">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>个人工作站 <small>/ 信号观察室</small></span>
+      </div>
+      <nav class="main-nav" aria-label="主导航">
+        <button class="nav-item active" data-view="signals" aria-current="page">信号</button>
+        <button class="nav-item" data-view="today">今日 <span class="nav-count">2</span></button>
+        <button class="nav-item" data-view="projects">项目</button>
+      </nav>
+      <div class="top-actions">
+        <span class="demo-pill">演示数据 · 2026.10.12 周一</span>
+        <button class="icon-button" id="notificationButton" aria-label="查看站内提醒" title="站内提醒"><span aria-hidden="true">◌</span><b class="notification-dot"></b></button>
+        <button class="ask-button" id="askButton"><span aria-hidden="true">✳</span> 问工作站</button>
+      </div>
+    </header>
+
+    <main id="appMain">
+      <section class="view active" id="signalsView" aria-label="信号阅读工作台">
+        <div class="workspace-heading">
+          <div><p class="section-kicker">演示数据 / 10 月 12 日，周一 / 07:40 更新</p><h1>今天值得留意的变化<span class="headline-period">.</span></h1></div>
+          <div class="heading-actions"><span>共 <strong id="signalCount">4</strong> 条</span><button class="text-action" id="openInboxButton">任务箱 <span id="inboxCount">0</span> <span aria-hidden="true">↗</span></button></div>
+        </div>
+
+        <div class="signal-workspace">
+          <aside class="signal-rail" aria-label="领域与变化列表">
+            <div class="rail-topline"><span>关注领域</span><button class="tiny-button" id="filterReset">全部</button></div>
+            <div class="domain-list" id="domainList" role="group" aria-label="筛选领域"></div>
+            <div class="rail-divider"></div>
+            <div class="rail-topline"><span>变化流</span><span class="rail-time">最近 24 小时</span></div>
+            <div class="signal-list" id="signalList"></div>
+            <div class="rail-footnote">仅显示站内演示变化。新增与更正会保留原始记录供核对。</div>
+          </aside>
+
+          <article class="reading-pane" id="readingPane" aria-live="polite"></article>
+
+          <aside class="context-pane" aria-label="与我的关联及下一步">
+            <div id="contextContent"></div>
+            <div class="runtime-toggle-wrap"><button class="runtime-toggle" id="runtimeToggle" aria-expanded="false" aria-controls="runtimePanel"><span class="runtime-light"></span> 数据与运行状态 <span aria-hidden="true">⌄</span></button></div>
+            <div class="runtime-panel" id="runtimePanel" hidden>
+              <dl><div><dt>最近数据</dt><dd>今天 07:40</dd></div><div><dt>最近检查</dt><dd>今天 07:43</dd></div><div><dt>最近成功</dt><dd>今天 07:40</dd></div></dl>
+              <p><span class="status-amber"></span> Schwab 持仓读取失败，显示上次成功数据（10 月 11 日 18:20）。</p>
+              <p><span class="status-mauve"></span> 恢复后待补查：06:00–07:40 的新闻更新。补查完成前不声称覆盖完整。</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view today-view" id="todayView" aria-label="今日计划" hidden>
+        <div class="workspace-heading"><div><p class="section-kicker">2026 年 10 月 12 日 · 周一</p><h1>把今天留给重要的事<span class="headline-period">.</span></h1></div><span class="demo-note">所有操作仅改变本页演示状态</span></div>
+        <div class="today-grid">
+          <section class="today-primary">
+            <div class="today-intro"><span class="small-label">今日安排</span><span class="time-outline">可用专注时间 4 小时 30 分</span></div>
+            <div class="schedule-row"><span class="schedule-time">09:00—10:30</span><div><strong>研究笔记：推理算力成本</strong><p>深度工作 · 已确认</p></div><span class="confirmed-tag">已确认</span></div>
+            <div class="schedule-row"><span class="schedule-time">11:00—11:30</span><div><strong>与设计伙伴同步原型</strong><p>工作日历 · 已确认</p></div><span class="confirmed-tag">已确认</span></div>
+            <div class="schedule-row proposed"><span class="schedule-time">14:00—15:00</span><div><strong>阅读 Atlas 技术说明并记下问题</strong><p>由信号生成的建议 · 未写入日历</p></div><span class="proposal-tag">建议</span></div>
+            <div class="schedule-row proposed"><span class="schedule-time">16:00—16:30</span><div><strong>整理本周家庭安排</strong><p>个人事项 · 未写入日历</p></div><span class="proposal-tag">建议</span></div>
+            <div class="plan-action"><p id="planStatus">建议计划等待你确认。确认仅保存本页计划，不会更改日历或发送邮件。</p><button class="primary-button" id="confirmPlanButton">确认今日计划</button></div>
+          </section>
+          <aside class="today-side"><div class="side-block"><p class="small-label">待办入口</p><h2>先收集，再决定</h2><p>新闻产生的行动先进入任务箱。你可以逐项接受并分配到项目，不会自动变成今日任务。</p><button class="outline-button" id="todayInboxButton">查看任务箱 <span id="todayInboxCount">0</span></button></div><div class="side-block muted-block"><p class="small-label">需要另行确认</p><h3>日历与邮件</h3><p>确认今日计划和实际修改日历、发送邮件是不同步骤。此原型不执行账户操作。</p><button class="disabled-button" disabled title="演示版未连接日历或邮箱">写入日历 / 发送邮件 · 未连接</button></div></aside>
+        </div>
+      </section>
+
+      <section class="view projects-view" id="projectsView" aria-label="项目与权限" hidden>
+        <div class="workspace-heading"><div><p class="section-kicker">持续推进 / 少量重点</p><h1>项目需要清楚的下一步<span class="headline-period">.</span></h1></div><span class="demo-note">3 个演示项目</span></div>
+        <div class="project-grid"><section class="project-main"><div class="project-list"><article class="project-card"><span class="project-number">学</span><div><h2>推理成本研究</h2><p>梳理新芯片与现有部署的成本边界。下一步：核对官方规格中的吞吐条件。</p><span class="project-meta">学习 · 本周重点</span></div></article><article class="project-card"><span class="project-number">工</span><div><h2>工作站原型</h2><p>比较三个界面的信息顺序与确认路径。下一步：记录 390px 手机端反馈。</p><span class="project-meta">工作 · 进行中</span></div></article><article class="project-card"><span class="project-number">家</span><div><h2>家庭周计划</h2><p>整理已确认安排与待讨论事项。只展示手动加入的内容。</p><span class="project-meta">家庭 · 每周</span></div></article></div><button class="outline-button project-inbox" id="projectsInboxButton">打开任务箱 <span id="projectsInboxCount">0</span></button></section><aside class="project-side"><p class="small-label">连接与权限</p><h2>跨领域使用，先取得许可</h2><div class="permission-row"><div><strong>工作邮件正文</strong><p id="permissionStatus">仅可用于工作邮件视图。用于学习、家庭或项目关联前，需要你单独授权。</p></div><button class="permission-button" id="permissionButton">管理权限</button></div><div class="permission-row"><div><strong>投资账户</strong><p>只读演示，Schwab 最近读取失败。未覆盖的账户不计入任何总额。</p></div><span class="readonly-tag">只读 · 部分覆盖</span></div><div class="exclusion-note">此原型没有银行、Drive、知识库、Codex 项目观察或交易入口。</div></aside></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>信号观察室 / 概念原型 C</span><a href="../observatory-v2/index.html">体验研究主题新版</a><a href="../index.html">三版对比 ↗</a><span>演示数据 · 不连接外部账户</span></footer>
+  </div>
+
+  <dialog id="sourceDialog" class="app-dialog"><div class="dialog-head"><span>来源与修订记录</span><button class="dialog-close" data-close-dialog aria-label="关闭来源详情">×</button></div><div id="sourceDialogContent"></div></dialog>
+  <dialog id="inboxDialog" class="app-dialog wide-dialog"><div class="dialog-head"><span>任务箱</span><button class="dialog-close" data-close-dialog aria-label="关闭任务箱">×</button></div><div id="inboxDialogContent"></div></dialog>
+  <dialog id="assistantDialog" class="app-dialog"><div class="dialog-head"><span>问工作站 <em>模拟</em></span><button class="dialog-close" data-close-dialog aria-label="关闭模拟助手">×</button></div><div class="assistant-copy"><p>这是演示界面，回答来自本页预设内容，不会调用 AI 或访问账户。</p><div id="assistantTranscript" class="assistant-transcript"><span>你可以问：这条变化和我的研究有什么关系？</span></div><form id="assistantForm"><label for="assistantInput">输入问题</label><div class="assistant-input-row"><input id="assistantInput" type="text" maxlength="120" placeholder="例如：下一步该核对什么？" required /><button class="primary-button" type="submit">生成模拟回答</button></div></form></div></dialog>
+  <dialog id="notificationDialog" class="app-dialog"><div class="dialog-head"><span>站内提醒</span><button class="dialog-close" data-close-dialog aria-label="关闭站内提醒">×</button></div><div class="notification-content"><p><span class="status-mauve"></span> 07:40 有 1 条更正：Atlas 性能数据的比较条件已补充。</p><p><span class="status-amber"></span> Schwab 持仓读取失败；关联显示为上次成功快照。</p><p class="dialog-muted">演示版只在站内显示提醒，不推送邮件或手机通知。</p></div></dialog>
+  <dialog id="permissionDialog" class="app-dialog"><div class="dialog-head"><span>工作邮件正文使用权限</span><button class="dialog-close" data-close-dialog aria-label="关闭权限设置">×</button></div><div class="permission-dialog-copy"><p>允许工作邮件正文用于跨领域关联时，学习、家庭与项目视图才会使用其中的内容。此处仅模拟授权状态，不读取任何真实邮件。</p><label class="check-row"><input type="checkbox" id="permissionCheckbox" /> <span>我允许在演示中跨领域使用工作邮件正文</span></label><button class="primary-button" id="savePermissionButton">保存演示权限</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

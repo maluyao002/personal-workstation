@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#252629">
+  <title>信号观察室 v2 · 个人工作站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23252629'/%3E%3Ccircle cx='12' cy='12' r='4' fill='%23e6d995'/%3E%3Ccircle cx='22' cy='20' r='3' fill='%23b4a7c6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./model.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="主导航">
+      <a href="#/today" class="brand" aria-label="信号观察室，返回今日动态"><span class="brand-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>信号<br><strong>观察室</strong></span></a>
+      <div class="sidebar-rule"></div>
+      <p class="nav-caption">工作空间</p>
+      <nav class="side-nav" id="sideNav" aria-label="五个主要入口">
+        <a href="#/today" data-nav="today"><span class="nav-glyph" aria-hidden="true">◒</span>今日动态</a>
+        <a href="#/schedule/calendar" data-nav="schedule"><span class="nav-glyph" aria-hidden="true">□</span>日程和待办<span class="nav-badge" id="navInboxCount">0</span></a>
+        <a href="#/news/atlas" data-nav="news"><span class="nav-glyph" aria-hidden="true">≋</span>新闻热点</a>
+        <a href="#/investing/nvda" data-nav="investing"><span class="nav-glyph" aria-hidden="true">◇</span>投资观察</a>
+        <a href="#/research/inference" data-nav="research"><span class="nav-glyph" aria-hidden="true">⌁</span>研究跟踪</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="sidebar-setting" id="permissionButton"><span aria-hidden="true">⚙</span> 权限设置</button>
+        <p class="sidebar-note">演示数据<br>2026.10.12 · 周一</p>
+        <a class="sidebar-back" href="../index.html">三版对比 ↗</a>
+        <a class="sidebar-back" href="../observatory/index.html">旧版 C ↗</a>
+      </div>
+    </aside>
+    <div class="main-column">
+      <header class="topbar">
+        <div class="top-left"><button id="menuButton" class="menu-button" aria-label="打开主导航" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><span class="top-date">10 月 12 日，周一</span><span class="top-slash">/</span><span id="topPageName" class="top-page">今日动态</span></div>
+        <div class="top-tools"><span class="demo-flag">演示数据</span><button id="noticeButton" class="icon-button" aria-label="站内提醒" title="站内提醒">◌<i></i></button><button id="assistantButton" class="assistant-button"><span aria-hidden="true">✳</span> 问工作站</button></div>
+      </header>
+      <main id="mainContent" tabindex="-1"></main>
+      <footer class="footer"><span>个人工作站 / 信号观察室 v2</span><span>仅本页演示 · 无账户写入</span><a href="../index.html">返回三版对比 ↗</a></footer>
+    </div>
+  </div>
+  <dialog id="sourceDialog" class="modal"><div class="modal-head"><span>来源与修订记录</span><button class="close-dialog" data-close aria-label="关闭来源详情">×</button></div><div class="modal-body" id="sourceBody"></div></dialog>
+  <dialog id="accountDialog" class="modal"><div class="modal-head"><span>账户覆盖与数据状态</span><button class="close-dialog" data-close aria-label="关闭账户覆盖详情">×</button></div><div class="modal-body" id="accountBody"></div></dialog>
+  <dialog id="permissionDialog" class="modal"><div class="modal-head"><span>工作邮件正文权限</span><button class="close-dialog" data-close aria-label="关闭权限设置">×</button></div><div class="modal-body"><p>演示的新闻与投资关联已有阅读授权。工作邮件正文用于学习、家庭或投资等跨领域关联前，仍需单独授权。这里不读取真实邮件。</p><label class="permission-check"><input type="checkbox" id="mailCheckbox"> <span>允许此演示跨领域使用工作邮件正文</span></label><button class="button-primary" id="savePermission">保存演示权限</button></div></dialog>
+  <dialog id="assistantDialog" class="modal"><div class="modal-head"><span>问工作站 <em>模拟</em></span><button class="close-dialog" data-close aria-label="关闭模拟助手">×</button></div><div class="modal-body"><p>回答按当前页面预设，不调用 AI、账户或外部服务。</p><div class="assistant-output" id="assistantOutput">可以问：这条变化与我的研究有什么关系？</div><form id="assistantForm"><label for="assistantInput">你的问题</label><div class="assistant-form-row"><input id="assistantInput" maxlength="120" required placeholder="例如：下一步要核对什么？"><button class="button-primary" type="submit">生成模拟回答</button></div></form></div></dialog>
+  <dialog id="noticeDialog" class="modal"><div class="modal-head"><span>站内提醒</span><button class="close-dialog" data-close aria-label="关闭站内提醒">×</button></div><div class="modal-body" id="noticeBody"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
